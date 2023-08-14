@@ -6,8 +6,9 @@ type ThemeProps = {
 };
 
 export enum ThemePalette {
-  BG = "#12181b",
-  LIME = "#c8fa5f",
+  BG = "#061A26",
+  NEON = "#0A5159",
+  NEON2='#50F2F2',
   FONT_GLOBAL = "'JetBrains Mono', monospace",
   //Alerts
   ERROR_MAIN = "#f44336",
@@ -23,7 +24,10 @@ const theme = createTheme({
       default: ThemePalette.BG,
     },
     primary: {
-      main: ThemePalette.LIME,
+      main: ThemePalette.NEON,
+    },
+    secondary: {
+      main: ThemePalette.NEON2,
     },
     error: {
       main: ThemePalette.ERROR_MAIN,
