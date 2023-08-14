@@ -22,7 +22,7 @@ export const Navbar: React.FC<{}> = () => {
                 onClick={() => navigate('/')}
               >
                 <Typography variant="h6" sx={{ textAlign: 'center' }}>
-                  Fitness Postgres
+                  Fitness Progress
                 </Typography>
               </Grid>
               <Grid item>
