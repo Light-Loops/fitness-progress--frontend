@@ -1,41 +1,39 @@
 import React from "react";
-import { Box, Button, Grid, TextField, Link } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Link,
+  TextField,
+} from "@mui/material";
 import { UseNotification } from "../../context/notification.context";
-import { LoginValidate } from "../../utils/validateForm";
+import { RegisterValidate } from "../../utils/validateForm";
 import { useFormik } from "formik";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GoogleIcon from "@mui/icons-material/Google";
 import { AuthLayout } from "../../layouts/Auth";
 import { Link as RouterLink } from "react-router-dom";
 
 type LoginType = {
   username: string;
   password: string;
+  confirmPassword: string,
 };
 
-export const LoginPage: React.FC<{}> = () => {
+export const RegisterPage: React.FC<{}> = () => {
   const { getSuccess } = UseNotification();
   const formik = useFormik<LoginType>({
     initialValues: {
       username: "",
       password: "",
+      confirmPassword: ''
     },
-    validationSchema: LoginValidate,
+    validationSchema: RegisterValidate,
     onSubmit: (values: LoginType) => {
       getSuccess(JSON.stringify(values));
     },
   });
 
-  const handleFacebookLogin = () => {
-    // Handle Facebook login logic here
-  };
-
-  const handleGoogleLogin = () => {
-    // Handle Google login logic here
-  };
-
   return (
-    <AuthLayout title="Bienvenido guerrero!">
+    <AuthLayout title="Conviertete en un guerrero. Ahora!">
       <Box component="form" onSubmit={formik.handleSubmit}>
         <TextField
           color="secondary"
@@ -63,41 +61,32 @@ export const LoginPage: React.FC<{}> = () => {
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
         />
+        <TextField
+          color="secondary"
+          name="confirmPassword"
+          margin="normal"
+          type="password"
+          fullWidth
+          label="Repite la contraseña"
+          sx={{ mt: 1.5, mb: 1.5 }}
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
+          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
+          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+        />
 
         <Button
           fullWidth
           type="submit"
           variant="contained"
-          sx={{ mt: 1.5, mb: 1 }}
+          sx={{ mt: 1.5, mb: 3 }}
         >
-          Iniciar sesión
-        </Button>
-
-        <Button
-          fullWidth
-          variant="outlined"
-          color="secondary"
-          startIcon={<FacebookIcon />}
-          onClick={handleFacebookLogin}
-          sx={{ mt: 1, mb: 1 }}
-        >
-          Iniciar con Facebook
-        </Button>
-
-        <Button
-          fullWidth
-          variant="outlined"
-          color="secondary"
-          startIcon={<GoogleIcon />}
-          onClick={handleGoogleLogin}
-          sx={{ mt: 1, mb: 3 }}
-        >
-          Iniciar con Google
+          Registrar
         </Button>
 
         <Grid container direction="row" justifyContent="end">
-          <Link color="inherit" component={RouterLink} to="/register">
-            Crear una cuenta
+          <Link color="inherit" component={RouterLink} to="/login">
+            Iniciar Sesión
           </Link>
         </Grid>
       </Box>
