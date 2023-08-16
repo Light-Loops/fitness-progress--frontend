@@ -7,6 +7,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import { AuthLayout } from "../../layouts/Auth";
 import { Link as RouterLink } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hooks";
+import { startFacebookSignIn, startGoogleSignIn } from "../../redux/auth";
+
 
 type LoginType = {
   username: string;
@@ -14,6 +17,7 @@ type LoginType = {
 };
 
 export const LoginPage: React.FC<{}> = () => {
+  const distpach = useAppDispatch();
   const { getSuccess } = UseNotification();
   const formik = useFormik<LoginType>({
     initialValues: {
@@ -27,11 +31,11 @@ export const LoginPage: React.FC<{}> = () => {
   });
 
   const handleFacebookLogin = () => {
-    // Handle Facebook login logic here
+    distpach(startFacebookSignIn());
   };
 
   const handleGoogleLogin = () => {
-    // Handle Google login logic here
+    distpach(startGoogleSignIn());
   };
 
   return (

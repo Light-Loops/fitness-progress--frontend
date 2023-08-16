@@ -4,9 +4,29 @@ import { HomePage, RegisterPage } from "./pages";
 import { RouterLayout } from "./common/RouterLayout";
 import { LoginPage } from "./pages/Login";
 import { useCheckAuth } from "./hooks/useCheckAuth";
+import { Grid, CircularProgress } from "@mui/material";
+
 export const AppRouter: React.FC = () => {
   const { status } = useCheckAuth();
   console.log(status);
+
+  if (status === "checking") {
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh", padding: 4 }}
+      >
+        <Grid container direction="row" justifyContent="center">
+          <CircularProgress color="primary" />
+        </Grid>
+      </Grid>
+    );
+  }
+
   return (
     <Routes>
       {status === "authenticated" ? (
