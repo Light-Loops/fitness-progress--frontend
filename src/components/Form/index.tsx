@@ -40,7 +40,7 @@ const formik = useFormik<UserInfo>({
         direction="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ minHeight: '100vh' }}
+        sx={{ minHeight: '50vh' }}
         >
         <Grid item>
             <Paper sx={{ padding: '1.2em', borderRadius: '0.5em', backgroundColor: '#061A26' }}>
