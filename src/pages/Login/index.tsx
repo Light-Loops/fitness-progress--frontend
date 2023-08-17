@@ -39,7 +39,7 @@ export const LoginPage: React.FC<{}> = () => {
   };
 
   return (
-    <AuthLayout title="Bienvenido guerrero!">
+    <AuthLayout title="Bienvenido Guerrero!">
       <Box component="form" onSubmit={formik.handleSubmit}>
         <TextField
           color="secondary"

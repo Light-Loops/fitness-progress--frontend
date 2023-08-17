@@ -33,7 +33,7 @@ export const RegisterPage: React.FC<{}> = () => {
   });
 
   return (
-    <AuthLayout title="Conviertete en un guerrero. Ahora!">
+    <AuthLayout title="Conviertete en un Guerrero. Ahora!">
       <Box component="form" onSubmit={formik.handleSubmit}>
         <TextField
           color="secondary"
