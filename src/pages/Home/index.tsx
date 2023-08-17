@@ -14,7 +14,7 @@ export const HomePage: React.FC = () => {
   }, [page]);
 
   return (
-    <Container sx={{ mt: 6 }} maxWidth="xl">
+    <Container sx={{ mt: 1 }} maxWidth="xl">
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
           <CircularProgress />

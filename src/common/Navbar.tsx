@@ -15,7 +15,9 @@ export const Navbar: React.FC<{}> = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="sticky">
-        <Toolbar>
+        <Toolbar
+          sx={{backgroundColor: '#061A26'}}
+        >
           <Container maxWidth="xl">
             <Grid
               container
@@ -25,19 +27,21 @@ export const Navbar: React.FC<{}> = () => {
             >
               <Grid
                 item
-                sx={{ cursor: 'pointer' }}
+                sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                 onClick={() => navigate('/')}
               >
-                <Typography variant="h6" sx={{ textAlign: 'center' }}>
+                <Typography variant="h6" color="secondary" sx={{ textAlign: 'center', marginRight: '10px'  }}>
                   Fitness Progress
                 </Typography>
+                <img src="./fitness-progress.svg" alt='fitness-progress' width='30px' height='30px' />
               </Grid>
               <Grid item>
               <Button
                 color='warning'
                 onClick={handleLogout}
+                variant='outlined'
               >
-                <Typography variant="h6" sx={{ textAlign: 'center' }}>
+                <Typography variant="h6" sx={{ textAlign: 'center', fontSize:'12px' }}>
                   Salir
                 </Typography>
               </Button>
