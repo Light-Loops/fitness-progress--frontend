@@ -17,7 +17,6 @@ export const Notification: React.FC<NotificationProps> = ({open,message,severity
         onClose={onClose}
         >
             <Alert 
-            onClose={onClose}
             severity={severity}
             >
                 <Typography>{message}</Typography>

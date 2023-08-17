@@ -10,12 +10,16 @@ export const LoginValidate = yup.object().shape({
     .string()
     .trim()
     .required('La contraseña es requerida')
-    .min(4, 'El minimo debe ser 4 caracteres')
+    .min(6, 'El minimo debe ser 6 caracteres')
     .max(20, 'El maximo debe ser 20 caracteres'),
 });
 
 export const RegisterValidate = yup.object().shape({
   username: yup
+  .string()
+  .trim()
+  .required('El nombre es requerido'),
+  email: yup
     .string()
     .trim()
     .required('El correo es requerido')
@@ -24,7 +28,7 @@ export const RegisterValidate = yup.object().shape({
     .string()
     .trim()
     .required('La contraseña es requerida')
-    .min(4, 'El minimo debe ser 4 caracteres')
+    .min(6, 'El minimo debe ser 6 caracteres')
     .max(20, 'El maximo debe ser 20 caracteres'),
   confirmPassword: yup.string()
     .oneOf([yup.ref('password')], 'Las contraseñas no coinciden')

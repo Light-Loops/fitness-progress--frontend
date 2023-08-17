@@ -1,37 +1,53 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Grid,
-  Link,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Grid, Link, TextField } from "@mui/material";
 import { UseNotification } from "../../context/notification.context";
 import { RegisterValidate } from "../../utils/validateForm";
 import { useFormik } from "formik";
 import { AuthLayout } from "../../layouts/Auth";
 import { Link as RouterLink } from "react-router-dom";
+import {
+  startCreatingUserWithEmailPassword,
+} from "../../redux/auth";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 type LoginType = {
   username: string;
+  email: string;
   password: string;
-  confirmPassword: string,
+  confirmPassword: string;
+};
+
+type Crendetials = {
+  email: string;
+  password: string;
+  displayName: string;
 };
 
 export const RegisterPage: React.FC<{}> = () => {
-  const { getSuccess } = UseNotification();
+  const { getError } = UseNotification();
+  const { errorMessage } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
   const formik = useFormik<LoginType>({
     initialValues: {
       username: "",
       password: "",
-      confirmPassword: ''
+      email: "",
+      confirmPassword: "",
     },
     validationSchema: RegisterValidate,
     onSubmit: (values: LoginType) => {
-      getSuccess(JSON.stringify(values));
+      
+      const formState: Crendetials = {
+        email: values.email,
+        password: values.password,
+        displayName: values.username,
+      };
+      dispatch(startCreatingUserWithEmailPassword(formState));
     },
   });
 
+  if (errorMessage != null) getError(errorMessage);
+  
   return (
     <AuthLayout title="Conviertete en un Guerrero. Ahora!">
       <Box component="form" onSubmit={formik.handleSubmit}>
@@ -39,14 +55,27 @@ export const RegisterPage: React.FC<{}> = () => {
           color="secondary"
           name="username"
           margin="normal"
-          type="email"
+          type="text"
           fullWidth
-          label="Correo"
+          label="Nombre"
           sx={{ mt: 2, mb: 1.5 }}
           value={formik.values.username}
           onChange={formik.handleChange}
           error={formik.touched.username && Boolean(formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
+        />
+        <TextField
+          color="secondary"
+          name="email"
+          margin="normal"
+          type="email"
+          fullWidth
+          label="Correo"
+          sx={{ mt: 2, mb: 1.5 }}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <TextField
           color="secondary"
@@ -71,8 +100,13 @@ export const RegisterPage: React.FC<{}> = () => {
           sx={{ mt: 1.5, mb: 1.5 }}
           value={formik.values.confirmPassword}
           onChange={formik.handleChange}
-          error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-          helperText={formik.touched.confirmPassword && formik.errors.confirmPassword}
+          error={
+            formik.touched.confirmPassword &&
+            Boolean(formik.errors.confirmPassword)
+          }
+          helperText={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
         />
 
         <Button

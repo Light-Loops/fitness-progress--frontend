@@ -1,7 +1,9 @@
 import {
+  createUserWithEmailAndPassword,
     FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithRedirect,
+  updateProfile,
   UserCredential,
 } from "firebase/auth";
 import { FirebaseAuth } from "./config";
@@ -17,6 +19,35 @@ type SignInResult = {
   uid?: string | null;
   errorMessage?: string | null;
 };
+
+type Crendetials = {
+  email: string,
+  password: string,
+  displayName: string
+}
+
+export const registerUserWithEmailPassword = async ({email,password,displayName}:Crendetials): Promise<SignInResult> => {
+  try {
+    const result: UserCredential = await createUserWithEmailAndPassword(FirebaseAuth, email,password);
+    const { uid, photoURL} = result.user;
+    await updateProfile(FirebaseAuth.currentUser!, {displayName});
+
+    return {
+      ok: true,
+      uid, 
+      photoUrl: photoURL, 
+      email, 
+      displayName
+    }
+
+  } catch (error) {
+    const errorMessage = getErrorMessage(error);
+    return {
+      ok: false,
+      errorMessage,
+    };
+  }
+}
 
 export const signInWithGoogle = async (): Promise<SignInResult> => {
   try {
