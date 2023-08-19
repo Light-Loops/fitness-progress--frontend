@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { AuthLayout } from "../../layouts/Auth";
 import { Link as RouterLink } from "react-router-dom";
 import {
+  startClearMessageError,
   startCreatingUserWithEmailPassword,
 } from "../../redux/auth";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -45,6 +46,10 @@ export const RegisterPage: React.FC<{}> = () => {
       dispatch(startCreatingUserWithEmailPassword(formState));
     },
   });
+
+  const handleLogin = () => {
+    dispatch(startClearMessageError());
+  }
 
   if (errorMessage != null) getError(errorMessage);
   
@@ -119,7 +124,7 @@ export const RegisterPage: React.FC<{}> = () => {
         </Button>
 
         <Grid container direction="row" justifyContent="end">
-          <Link color="inherit" component={RouterLink} to="/login">
+          <Link color="inherit" component={RouterLink} to="/login" onClick={handleLogin}>
             Iniciar Sesión
           </Link>
         </Grid>

@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const LoginValidate = yup.object().shape({
-  username: yup
+  email: yup
     .string()
     .trim()
     .required('El correo es requerido')

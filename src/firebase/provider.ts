@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
     FacebookAuthProvider,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
   signInWithRedirect,
   updateProfile,
   UserCredential,
@@ -20,13 +21,13 @@ type SignInResult = {
   errorMessage?: string | null;
 };
 
-type Crendetials = {
+type Credetials = {
   email: string,
   password: string,
-  displayName: string
+  displayName?: string
 }
 
-export const registerUserWithEmailPassword = async ({email,password,displayName}:Crendetials): Promise<SignInResult> => {
+export const registerUserWithEmailPassword = async ({email,password,displayName}:Credetials): Promise<SignInResult> => {
   try {
     const result: UserCredential = await createUserWithEmailAndPassword(FirebaseAuth, email,password);
     const { uid, photoURL} = result.user;
@@ -40,6 +41,26 @@ export const registerUserWithEmailPassword = async ({email,password,displayName}
       displayName
     }
 
+  } catch (error) {
+    const errorMessage = getErrorMessage(error);
+    return {
+      ok: false,
+      errorMessage,
+    };
+  }
+}
+
+export const loginWithEmailPassword = async({email, password}: Credetials): Promise<SignInResult> => {
+  try {
+    const result: UserCredential = await signInWithEmailAndPassword(FirebaseAuth,email,password);
+    const {displayName, photoURL, uid} = result.user;
+    return {
+      ok: true,
+      uid, 
+      photoUrl: photoURL, 
+      email, 
+      displayName
+    }
   } catch (error) {
     const errorMessage = getErrorMessage(error);
     return {

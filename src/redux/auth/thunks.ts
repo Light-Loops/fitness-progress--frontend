@@ -1,11 +1,11 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { checkingCredentials, clearMessageError, login, logout } from "./authSlice"
-import { logoutFirebase, registerUserWithEmailPassword, signInWithFacebook, signInWithGoogle } from "../../firebase/provider";
+import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithFacebook, signInWithGoogle } from "../../firebase/provider";
 
-type Crendetials = {
+type Credetials = {
     email: string,
     password: string,
-    displayName: string
+    displayName?: string
 }
 
 export const checkingAuthentication = () => {
@@ -14,15 +14,25 @@ export const checkingAuthentication = () => {
     }
 }
 
-export const startCreatingUserWithEmailPassword = ({email,password,displayName}:Crendetials) => {
+export const startCreatingUserWithEmailPassword = ({email,password,displayName}:Credetials) => {
     return async(dispatch: Dispatch) => {
         dispatch(checkingCredentials());
 
         const {ok, uid, photoUrl, errorMessage} = await registerUserWithEmailPassword({email,password,displayName});
-        console.log(ok,uid,photoUrl,errorMessage);
         if(!ok) return dispatch(logout({errorMessage}));
         
         dispatch(login({uid, displayName, email, photoUrl}));
+    }
+}
+
+export const startLoginWithEmailPassword = ({email,password}:Credetials) => {
+    return async(dispatch: Dispatch) => {
+        dispatch(checkingCredentials());
+
+        const {ok, displayName, uid, photoUrl, errorMessage} = await loginWithEmailPassword({email,password});
+        if(!ok) return dispatch(logout({errorMessage}));
+
+        dispatch(login({uid, displayName, email, photoUrl}))
     }
 }
 
