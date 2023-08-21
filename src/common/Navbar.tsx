@@ -30,7 +30,8 @@ export const Navbar: React.FC<{}> = () => {
                 sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                 onClick={() => navigate('/')}
               >
-                <Typography variant="h6" color="secondary" sx={{ textAlign: 'center', marginRight: '10px'  }}>
+                <Typography variant="h6" color="Primary" sx={{ 
+                  textAlign: 'center', marginRight: '10px'  }}>
                   Fitness Progress
                 </Typography>
                 <img src="./fitness-progress.svg" alt='fitness-progress' width='30px' height='30px' />

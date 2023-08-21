@@ -16,6 +16,7 @@ import { useFormik } from "formik";
 type UserInfo = {
     weight: string;
     height: string;
+    age: number;
     fitnessLevel: string;
 };
 
@@ -26,6 +27,7 @@ const formik = useFormik<UserInfo>({
     initialValues: {
         weight: "",
         height: "",
+        age: 0,
         fitnessLevel: "",
     },
     onSubmit: (values: UserInfo) => {
@@ -40,7 +42,7 @@ const formik = useFormik<UserInfo>({
         direction="column"
         alignItems="center"
         justifyContent="center"
-        sx={{ minHeight: '50vh' }}
+        sx={{ minHeight: '80vh' }}
         >
         <Grid item>
             <Paper sx={{ padding: '1.2em', borderRadius: '0.5em', backgroundColor: '#061A26' }}>
@@ -61,6 +63,16 @@ const formik = useFormik<UserInfo>({
                 type="string"
                 fullWidth
                 label="Talla (cm)"
+                sx={{ mt: 1.5, mb: 1.5 }}
+                value={formik.values.height}
+                onChange={formik.handleChange}
+                />
+                <TextField
+                name="age"
+                margin="normal"
+                type="string"
+                fullWidth
+                label="Edad"
                 sx={{ mt: 1.5, mb: 1.5 }}
                 value={formik.values.height}
                 onChange={formik.handleChange}

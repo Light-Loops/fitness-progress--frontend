@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, CircularProgress, Container } from '@mui/material';
+import { Box, CircularProgress, Container, Typography } from '@mui/material';
 import { UserInfoForm } from '../../components/Form';
+import { ProposalPage } from '../../components/Proposal';
 
 export const HomePage: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(true);
@@ -20,7 +21,8 @@ export const HomePage: React.FC = () => {
           <CircularProgress />
         </Box>
       ) : (
-        <UserInfoForm onSubmit={(values) => console.log(values)} />
+        //<UserInfoForm onSubmit={(values) => console.log(values)} />
+        <ProposalPage />
       )}
     </Container>
   );
