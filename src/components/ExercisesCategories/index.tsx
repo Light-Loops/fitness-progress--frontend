@@ -8,6 +8,7 @@ import {
   MenuItem,
   Select,
   Pagination,
+  Typography,
 } from '@mui/material';
 import ExerciseList from '../ExercisesList';
 import { Exercise } from './interface';
@@ -56,17 +57,24 @@ const ExerciseCategoryList: React.FC = () => {
   const displayedExercises = exercises.slice(startIndex, endIndex);
 
   return (
-    <Container maxWidth="xl" style={{ marginTop: '2rem' }}>
-      <h1>Categoria de Ejercicios</h1>
+    <Container maxWidth="xl" style={{ marginTop: '2rem', marginBottom:'8rem' }}>
+      <Typography
+        variant="h5"
+        sx={{
+          mt: 8,
+          mb: 2,
+        }}
+        maxWidth={'sm'}
+      >Categoria de Ejercicios</Typography>
       {loading ? (
         <CircularProgress />
       ) : (
         <>
           <FormControl fullWidth>
             <InputLabel>Seleciona la categoria</InputLabel>
-            <Select value={selectedCategory} onChange={handleCategoryChange}>
+            <Select value={selectedCategory} onChange={handleCategoryChange} sx={{textTransform:'capitalize'}}>
               {categories.map((category, index) => (
-                <MenuItem key={index} value={category}>
+                <MenuItem key={index} value={category} sx={{textTransform:'capitalize'}}>
                   {category}
                 </MenuItem>
               ))}
@@ -80,7 +88,7 @@ const ExerciseCategoryList: React.FC = () => {
             page={page}
             onChange={handleChange}
             sx={{
-              mt: 5,
+              mt: 2,
               mb: 5,
             }}
             size="large"

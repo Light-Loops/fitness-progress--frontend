@@ -6,15 +6,17 @@ type ThemeProps = {
 };
 
 export enum ThemePalette {
-  BG = "#061A26",
-  NEON = "#0A5159",
-  NEON2='#50F2F2',
-  FONT_GLOBAL = "'JetBrains Mono', monospace",
+  BG = "#333F4E",
+  NEON = "#99a8b4",
+  NEON2='#F9F9F8',
+  FONT_GLOBAL = "'Montserrat', sans-serif",
   //Alerts
   ERROR_MAIN = "#f44336",
   BG_ERROR_MAIN = "rgba(244, 67, 54, 0.1)",
-  SUCCESS_MAIN = "#66bb6a",
+  SUCCESS_MAIN = "#63ad6e",
   BG_SUCCESS_MAIN = "rgba(102, 187, 106)",
+  WARNING = "#e09d36",
+  CARD = "#333F4E",
 }
 
 const theme = createTheme({
@@ -35,6 +37,10 @@ const theme = createTheme({
     },
     success: {
       main: ThemePalette.SUCCESS_MAIN,
+      contrastText: '#fff',
+    },
+    warning: {
+      main: ThemePalette.WARNING,
       contrastText: '#fff',
     },
   },
@@ -60,6 +66,14 @@ const theme = createTheme({
         standardSuccess: {
           border: `1px solid ${ThemePalette.SUCCESS_MAIN}`,
           backgroundColor: ThemePalette.BG_SUCCESS_MAIN,
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backgroundColor: ThemePalette.CARD,
+          color: ThemePalette.NEON2,
         },
       },
     },

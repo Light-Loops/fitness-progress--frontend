@@ -1,9 +1,12 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import React, { useRef } from "react";
 import ExerciseList from "../ExercisesCategories";
+import IMG1 from '../../asessts/IMG1.png';
+import { useNavigate } from "react-router-dom";
 
 export const ProposalPage: React.FC = () => {
     const exerciseListRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
 
     const scrollTo = () => {
     if (exerciseListRef.current) {
@@ -12,7 +15,40 @@ export const ProposalPage: React.FC = () => {
     };
     
     return (
-    <Container sx={{ mt: 8 }} maxWidth="xl">
+    <Container sx={{ mt: 4 }} maxWidth="md">
+        <Container maxWidth="xl">
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid
+                item
+                sx={{ 
+                    cursor: 'pointer', 
+                    display: 'flex', 
+                    alignItems: 'center' ,
+                    marginBottom:'2rem' 
+                }}
+                onClick={() => navigate('/')}
+              >
+                <Typography variant="h4" color="secondary" sx={{ 
+                    textAlign: 'center', 
+                    marginRight: '10px', 
+                    fontWeight: 'bold',
+                    }}>
+                  Fitness Progress
+                </Typography>
+                <img src="./fitness-progress.svg" 
+                alt='fitness-progress' 
+                width='60px' 
+                height='60px' />
+              </Grid>
+              <Grid item>
+              </Grid>
+            </Grid>
+          </Container>
         <Box
         sx={{ 
             width: '100%',
@@ -21,8 +57,13 @@ export const ProposalPage: React.FC = () => {
             justifyContent: 'space-between', 
             py: 8, 
             px: 5,
-            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));',
-        }}
+            backgroundImage: `url(${IMG1})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            height: '50vh',
+            maxHeight: '500px',
+            boxShadow: '4px 4px 4px 4px rgba(0, 0, 0, 0.25)',
+               }}
         borderRadius={6}
         >
         <Grid
@@ -31,13 +72,16 @@ export const ProposalPage: React.FC = () => {
             justifyContent="center"
             alignItems="center"
             flexDirection="column"
-            sx={{ height: '100%'}}
+            sx={{ height: '100%',}}
+
         >
             <Typography
             variant="h6"
             sx={{ 
                 textAlign: 'center', 
-                color: '#ffffff' 
+                color: '#ffffff', 
+                textShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.25)',
+                mt: 2,    
             }}
             maxWidth={"md"}
             >
@@ -60,7 +104,10 @@ export const ProposalPage: React.FC = () => {
             onClick={scrollTo} 
             variant="contained" 
             color="primary" 
-            sx={{ width: '180px', height: '40px' 
+            sx={{ 
+                width: '180px', 
+                height: '40px',
+                color: '#F9F9F8',
             }}>
             ¡Comienza Ahora!
             </Button>
