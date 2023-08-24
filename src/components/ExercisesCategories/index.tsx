@@ -59,7 +59,7 @@ const ExerciseCategoryList: React.FC = () => {
   return (
     <Container maxWidth="xl" style={{ marginTop: '2rem', marginBottom:'8rem' }}>
       <Typography
-        variant="h5"
+        variant="h6"
         sx={{
           mt: 8,
           mb: 2,

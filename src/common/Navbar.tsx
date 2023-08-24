@@ -23,25 +23,26 @@ export const Navbar: React.FC<{}> = () => {
     <Box sx={{ flexGrow: 1 }}>
       <BottomNavigation
       value={value}
+      showLabels
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
       sx={{
-        boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.75)',
+        boxShadow: '4px 4px 4px 4px rgba(0, 0, 0, 0.25)',
         position: "fixed",
         bottom: 0,
         width: "100%",
-        backgroundColor: '#333F4E',
-        zIndex: 1000
+        zIndex: 1000,
+        fontSize: '2rem',
       }}
     >
-      <BottomNavigationAction  icon={<HomeIcon />} />
-      <BottomNavigationAction  icon={<ListIcon />} />
-      <BottomNavigationAction  icon={<PersonIcon />} />
-      <BottomNavigationAction  
+      <BottomNavigationAction label="Inicio" icon={<HomeIcon />} />
+      <BottomNavigationAction label="Rutina" icon={<ListIcon />} />
+      <BottomNavigationAction label="Perfil" icon={<PersonIcon />} />
+      <BottomNavigationAction 
+      label="Salir"
       icon={<ExitToApp />} 
-      onClick={handleLogout}
-      sx={{color: '#f2a42b'}}  
+      onClick={handleLogout} 
       />
     </BottomNavigation>
     </Box>

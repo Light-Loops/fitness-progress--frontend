@@ -33,7 +33,7 @@ export const ProposalPage: React.FC = () => {
                 }}
                 onClick={() => navigate('/')}
               >
-                <Typography variant="h4" color="secondary" sx={{ 
+                <Typography variant="h5" color="secondary" sx={{ 
                     textAlign: 'center', 
                     marginRight: '10px', 
                     fontWeight: 'bold',
@@ -107,7 +107,7 @@ export const ProposalPage: React.FC = () => {
             sx={{ 
                 width: '180px', 
                 height: '40px',
-                color: '#F9F9F8',
+                color: '#000000',
             }}>
             ¡Comienza Ahora!
             </Button>

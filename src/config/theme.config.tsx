@@ -6,8 +6,8 @@ type ThemeProps = {
 };
 
 export enum ThemePalette {
-  BG = "#333F4E",
-  NEON = "#99a8b4",
+  BG = "#12181b",
+  NEON = "#c8fa5f",
   NEON2='#F9F9F8',
   FONT_GLOBAL = "'Montserrat', sans-serif",
   //Alerts
@@ -74,6 +74,14 @@ const theme = createTheme({
         root: {
           backgroundColor: ThemePalette.CARD,
           color: ThemePalette.NEON2,
+        },
+      },
+    },
+    MuiBottomNavigation: {
+      styleOverrides: {
+        root: {
+          backgroundColor: ThemePalette.BG,
+          color: ThemePalette.NEON,
         },
       },
     },

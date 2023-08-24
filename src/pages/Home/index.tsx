@@ -3,6 +3,7 @@ import { Box, CircularProgress, Container, Typography } from '@mui/material';
 import { UserInfoForm } from '../../components/Form';
 import { ProposalPage } from '../../components/Proposal';
 
+
 export const HomePage: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(true);
   const [page, setPage] = React.useState<number>(1);
@@ -15,7 +16,9 @@ export const HomePage: React.FC = () => {
   }, [page]);
 
   return (
-    <Container sx={{ mt: 1 }} maxWidth="xl">
+    <Container sx={{ 
+      mt: 1, 
+      }} maxWidth="xl">
       {loading ? (
         <Box sx={{ display: 'flex', justifyContent: 'center', height:400 }}>
           <CircularProgress />
