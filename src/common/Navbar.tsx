@@ -1,16 +1,15 @@
-import { AppBar,  BottomNavigation,  BottomNavigationAction,  Box, Button, Container, Grid,  Toolbar, Typography } from '@mui/material';
+import {  BottomNavigation,  BottomNavigationAction,  Box } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+/* import { useNavigate } from 'react-router-dom'; */
 import { useAppDispatch } from '../redux/hooks';
 import { startLogout } from '../redux/auth/thunks';
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import PersonIcon from "@mui/icons-material/Person";
 import { ExitToApp } from '@mui/icons-material';
-import zIndex from '@mui/material/styles/zIndex';
 
 export const Navbar: React.FC<{}> = () => {
-  const navigate = useNavigate();
+  /* const navigate = useNavigate(); */
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, CircularProgress, Container, Typography } from '@mui/material';
-import { UserInfoForm } from '../../components/Form';
+import { Box, CircularProgress, Container } from '@mui/material';
+/* import { UserInfoForm } from '../../components/Form'; */
 import { ProposalPage } from '../../components/Proposal';
 
 
 export const HomePage: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(true);
-  const [page, setPage] = React.useState<number>(1);
+  const [page, /* setPage */] = React.useState<number>(1);
 
   React.useEffect(() => {
     setLoading(true);

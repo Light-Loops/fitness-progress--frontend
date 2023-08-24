@@ -15,7 +15,12 @@ export const ProposalPage: React.FC = () => {
     };
     
     return (
-    <Container sx={{ mt: 4 }} maxWidth="md">
+    <Container 
+    sx={{ 
+      mt: 4,
+      display: 'flex', 
+      flexDirection: 'column', 
+     }} maxWidth="md">
         <Container maxWidth="xl">
             <Grid
               container
@@ -51,10 +56,11 @@ export const ProposalPage: React.FC = () => {
           </Container>
         <Box
         sx={{ 
-            width: '100%',
+            maxWidth: '447px',
             display: 'flex', 
             flexDirection: 'column', 
-            justifyContent: 'space-between', 
+            justifyContent: 'center',
+            alignSelf: 'center',
             py: 8, 
             px: 5,
             backgroundImage: `url(${IMG1})`,
@@ -68,46 +74,46 @@ export const ProposalPage: React.FC = () => {
         >
         <Grid
             container
-            direction="row"
             justifyContent="center"
             alignItems="center"
             flexDirection="column"
-            sx={{ height: '100%',}}
-
+            position="relative"
         >
             <Typography
-            variant="h6"
+            variant="h3"
             sx={{ 
-                textAlign: 'center', 
+                textAlign: 'center',
                 color: '#ffffff', 
                 textShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.25)',
-                mt: 2,    
+                fontFamily: 'Black Ops One',
+                fontSize: {xs: '1.6rem', sm:'3rem'},
+                opacity: 0.6
             }}
-            maxWidth={"md"}
             >
-            Entrenamiento personalizado y progreso en un solo lugar
+            Entrenamiento personalizado
             </Typography>
             <Typography
             variant="h6"
             sx={{ 
-                textAlign: 'center', 
+                textAlign: 'left', 
                 color: '#ffffff', 
-                mt: 2, 
-                mb: 3, 
-                fontSize: '1rem' 
+                mt:-1,
+                mb: 2, 
+                fontSize: '1rem',
+                fontWeight: 'bold'
             }}
             maxWidth={"sm"}
             >
-            Alcanza tu mejor versión
+            ¡Alcanza tu mejor versión!
             </Typography>
             <Button 
             onClick={scrollTo} 
             variant="contained" 
             color="primary" 
             sx={{ 
-                width: '180px', 
-                height: '40px',
-                color: '#000000',
+                width: 'contained', 
+                transform: 'skew(-20deg)',
+                fontWeight: '700'
             }}>
             ¡Comienza Ahora!
             </Button>

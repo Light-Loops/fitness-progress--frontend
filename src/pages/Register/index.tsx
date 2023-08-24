@@ -118,7 +118,7 @@ export const RegisterPage: React.FC<{}> = () => {
           fullWidth
           type="submit"
           variant="contained"
-          sx={{ mt: 1.5, mb: 3 }}
+          sx={{ mt: 1.5, mb: 3, fontWeight:"bold"}}
         >
           Registrar
         </Button>

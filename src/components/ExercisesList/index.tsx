@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
-import { Warning } from '@mui/icons-material';
 
 type Exercise = {
     id: string;

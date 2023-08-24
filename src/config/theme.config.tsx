@@ -7,11 +7,11 @@ type ThemeProps = {
 
 export enum ThemePalette {
   BG = "#12181b",
-  NEON = "#c8fa5f",
+  NEON = "#CDFE2F",
   NEON2='#F9F9F8',
   FONT_GLOBAL = "'Montserrat', sans-serif",
   //Alerts
-  ERROR_MAIN = "#f44336",
+  ERROR_MAIN = "#EB0357",
   BG_ERROR_MAIN = "rgba(244, 67, 54, 0.1)",
   SUCCESS_MAIN = "#63ad6e",
   BG_SUCCESS_MAIN = "rgba(102, 187, 106)",

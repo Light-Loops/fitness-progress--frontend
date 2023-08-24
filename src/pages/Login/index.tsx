@@ -88,7 +88,7 @@ export const LoginPage: React.FC<{}> = () => {
           fullWidth
           type="submit"
           variant="contained"
-          sx={{ mt: 1.5, mb: 1 }}
+          sx={{ mt: 1.5, mb: 1, fontWeight:"bold" }}
         >
           Iniciar sesión
         </Button>
@@ -96,7 +96,7 @@ export const LoginPage: React.FC<{}> = () => {
         <Button
           fullWidth
           variant="outlined"
-          color="secondary"
+          color="primary"
           startIcon={<FacebookIcon />}
           onClick={handleFacebookLogin}
           sx={{ mt: 1, mb: 1 }}
@@ -107,7 +107,7 @@ export const LoginPage: React.FC<{}> = () => {
         <Button
           fullWidth
           variant="outlined"
-          color="secondary"
+          color="primary"
           startIcon={<GoogleIcon />}
           onClick={handleGoogleLogin}
           sx={{ mt: 1, mb: 3 }}
