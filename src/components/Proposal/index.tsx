@@ -56,14 +56,14 @@ export const ProposalPage: React.FC = () => {
           </Container>
         <Box
         sx={{ 
-            maxWidth: '447px',
+            maxWidth: 'md',
             display: 'flex', 
             flexDirection: 'column', 
             justifyContent: 'center',
             alignSelf: 'center',
             py: 8, 
             px: 5,
-            backgroundImage: `url(${IMG1})`,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${IMG1})`,
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             height: '50vh',
@@ -85,9 +85,9 @@ export const ProposalPage: React.FC = () => {
                 textAlign: 'center',
                 color: '#ffffff', 
                 textShadow: '2px 2px 2px 2px rgba(0, 0, 0, 0.25)',
-                fontFamily: 'Black Ops One',
+                fontWeight: 'bold',
                 fontSize: {xs: '1.6rem', sm:'3rem'},
-                opacity: 0.6
+                opacity: 0.9
             }}
             >
             Entrenamiento personalizado
@@ -97,10 +97,10 @@ export const ProposalPage: React.FC = () => {
             sx={{ 
                 textAlign: 'left', 
                 color: '#ffffff', 
-                mt:-1,
-                mb: 2, 
+                mt:1,
+                mb: 3, 
                 fontSize: '1rem',
-                fontWeight: 'bold'
+                fontWeight: '700'
             }}
             maxWidth={"sm"}
             >
@@ -112,8 +112,6 @@ export const ProposalPage: React.FC = () => {
             color="primary" 
             sx={{ 
                 width: 'contained', 
-                transform: 'skew(-20deg)',
-                fontWeight: '700'
             }}>
             ¡Comienza Ahora!
             </Button>

@@ -1,6 +1,6 @@
-import {  BottomNavigation,  BottomNavigationAction,  Box } from '@mui/material';
+import {  BottomNavigation,  BottomNavigationAction,  Box, Button } from '@mui/material';
 import React from 'react';
-/* import { useNavigate } from 'react-router-dom'; */
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { useAppDispatch } from '../redux/hooks';
 import { startLogout } from '../redux/auth/thunks';
 import HomeIcon from "@mui/icons-material/Home";
@@ -9,14 +9,24 @@ import PersonIcon from "@mui/icons-material/Person";
 import { ExitToApp } from '@mui/icons-material';
 
 export const Navbar: React.FC<{}> = () => {
-  /* const navigate = useNavigate(); */
+  
   const dispatch = useAppDispatch();
+  
+  const [value, setValue] = React.useState(0);
+  const [open, setOpen] = React.useState(false); 
+
+  const handleOpenDialog = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
 
   const handleLogout = () => {
     dispatch(startLogout());
-  }
-  const [value, setValue] = React.useState(0);
-
+    setOpen(false);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -38,12 +48,29 @@ export const Navbar: React.FC<{}> = () => {
       <BottomNavigationAction label="Inicio" icon={<HomeIcon />} />
       <BottomNavigationAction label="Rutina" icon={<ListIcon />} />
       <BottomNavigationAction label="Perfil" icon={<PersonIcon />} />
-      <BottomNavigationAction 
-      label="Salir"
-      icon={<ExitToApp />} 
-      onClick={handleLogout} 
-      />
-    </BottomNavigation>
+      <BottomNavigationAction
+          label="Salir"
+          icon={<ExitToApp />}
+          onClick={handleOpenDialog} 
+        />
+      </BottomNavigation>
+
+      <Dialog open={open} onClose={handleCloseDialog}>
+        <DialogTitle>Confirmar Cierre de Sesión</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            ¿Estás seguro de que deseas cerrar la sesión Guerrero?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancelar
+          </Button>
+          <Button onClick={handleLogout} color="primary">
+            Cerrar Sesión
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
