@@ -12,7 +12,7 @@ export const HomePage: React.FC = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 0);
   }, [page]);
 
   return (

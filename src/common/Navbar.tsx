@@ -7,9 +7,10 @@ import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import PersonIcon from "@mui/icons-material/Person";
 import { ExitToApp } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar: React.FC<{}> = () => {
-  
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   
   const [value, setValue] = React.useState(0);
@@ -45,9 +46,17 @@ export const Navbar: React.FC<{}> = () => {
         fontSize: '2rem',
       }}
     >
-      <BottomNavigationAction label="Inicio" icon={<HomeIcon />} />
+      <BottomNavigationAction 
+      label="Inicio" 
+      icon={<HomeIcon />}
+      onClick={() => navigate('/')}
+      />
       <BottomNavigationAction label="Rutina" icon={<ListIcon />} />
-      <BottomNavigationAction label="Perfil" icon={<PersonIcon />} />
+      <BottomNavigationAction 
+      label="Perfil" 
+      icon={<PersonIcon />}
+      onClick={() => navigate('/profile')}
+      />
       <BottomNavigationAction
           label="Salir"
           icon={<ExitToApp />}

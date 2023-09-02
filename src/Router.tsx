@@ -5,6 +5,7 @@ import { RouterLayout } from "./common/RouterLayout";
 import { LoginPage } from "./pages/Login";
 import { useCheckAuth } from "./hooks/useCheckAuth";
 import { Grid, CircularProgress } from "@mui/material";
+import { Profile} from "./pages/Profile";
 
 export const AppRouter: React.FC = () => {
   const { status } = useCheckAuth();
@@ -32,6 +33,7 @@ export const AppRouter: React.FC = () => {
       {status === "authenticated" ? (
         <Route path="/" element={<RouterLayout />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/*" element={<Navigate to={"/"} />} />
         </Route>
       ) : (

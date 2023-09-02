@@ -85,6 +85,14 @@ const theme = createTheme({
         },
       },
     },
+    MuiPaper:{
+      styleOverrides:{
+        root:{
+          backgroundColor: ThemePalette.BG,
+          color: ThemePalette.NEON,
+        }
+      }
+    }
   },
 });
 
