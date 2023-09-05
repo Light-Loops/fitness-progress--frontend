@@ -18,10 +18,10 @@ export const startCreatingUserWithEmailPassword = ({email,password,displayName}:
     return async(dispatch: Dispatch) => {
         dispatch(checkingCredentials());
 
-        const {ok, uid, photoUrl, errorMessage} = await registerUserWithEmailPassword({email,password,displayName});
+        const {ok, uid, photoURL, errorMessage} = await registerUserWithEmailPassword({email,password,displayName});
         if(!ok) return dispatch(logout({errorMessage}));
         
-        dispatch(login({uid, displayName, email, photoUrl}));
+        dispatch(login({uid, displayName, email, photoURL}));
     }
 }
 
@@ -29,10 +29,10 @@ export const startLoginWithEmailPassword = ({email,password}:Credetials) => {
     return async(dispatch: Dispatch) => {
         dispatch(checkingCredentials());
 
-        const {ok, displayName, uid, photoUrl, errorMessage} = await loginWithEmailPassword({email,password});
+        const {ok, displayName, uid, photoURL, errorMessage} = await loginWithEmailPassword({email,password});
         if(!ok) return dispatch(logout({errorMessage}));
 
-        dispatch(login({uid, displayName, email, photoUrl}))
+        dispatch(login({uid, displayName, email, photoURL}))
     }
 }
 

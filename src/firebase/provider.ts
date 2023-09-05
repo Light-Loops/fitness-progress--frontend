@@ -16,7 +16,7 @@ type SignInResult = {
   ok: boolean;
   displayName?: string | null;
   email?: string | null;
-  photoUrl?: string | null;
+  photoURL?: string | null;
   uid?: string | null;
   errorMessage?: string | null;
 };
@@ -36,7 +36,7 @@ export const registerUserWithEmailPassword = async ({email,password,displayName}
     return {
       ok: true,
       uid, 
-      photoUrl: photoURL, 
+      photoURL, 
       email, 
       displayName
     }
@@ -57,7 +57,7 @@ export const loginWithEmailPassword = async({email, password}: Credetials): Prom
     return {
       ok: true,
       uid, 
-      photoUrl: photoURL, 
+      photoURL, 
       email, 
       displayName
     }
@@ -82,7 +82,7 @@ export const signInWithGoogle = async (): Promise<SignInResult> => {
       ok: true,
       displayName,
       email,
-      photoUrl: photoURL,
+      photoURL,
       uid,
     };
   } catch (error) {
@@ -107,7 +107,7 @@ export const signInWithFacebook = async (): Promise<SignInResult> => {
       ok: true,
       displayName,
       email,
-      photoUrl: photoURL,
+      photoURL,
       uid,
     };
   } catch (error: unknown) {
