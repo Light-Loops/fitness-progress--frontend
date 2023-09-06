@@ -1,6 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import { checkingCredentials, clearMessageError, login, logout } from "./authSlice"
-import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithFacebook, signInWithGoogle } from "../../firebase/provider";
+import { deleteUser, loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithFacebook, signInWithGoogle } from "../../firebase/provider";
 
 type Credetials = {
     email: string,
@@ -65,4 +65,11 @@ export const startClearMessageError = () => {
     return async(dispatch: Dispatch) => {
         dispatch(clearMessageError());
     }
+}
+
+export const startDeleteUser = () => {
+    return async(dispatch: Dispatch) => {
+        const {errorMessage} = await deleteUser();
+        dispatch(logout({errorMessage}));
+    } 
 }

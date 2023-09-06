@@ -9,8 +9,7 @@ import { Profile} from "./pages/Profile";
 
 export const AppRouter: React.FC = () => {
   const { status } = useCheckAuth();
-  console.log(status);
-
+  
   if (status === "checking") {
     return (
       <Grid

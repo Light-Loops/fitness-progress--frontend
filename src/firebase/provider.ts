@@ -1,6 +1,6 @@
 import {
   createUserWithEmailAndPassword,
-    FacebookAuthProvider,
+  FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithRedirect,
@@ -122,6 +122,23 @@ export const signInWithFacebook = async (): Promise<SignInResult> => {
 export const logoutFirebase = async () => {
   return await FirebaseAuth.signOut();
 };
+
+export const deleteUser = async() => {
+  try {
+    const user  =  await FirebaseAuth.currentUser;
+    await user?.delete();
+    return {
+      ok: false,
+      errorMessage: "Ex-Guerrero, tu cuenta fue eliminada",
+    }
+  } catch (error) {
+    return {
+      ok: false,
+      errorMessage: "Guerrero, tu cuenta no ha sido eliminada, ya que no has realizado un inicio de sesión en un período reciente.",
+    }
+  }
+  
+}
 
 function getErrorMessage(error: unknown): string {
     return error instanceof Error ? error.message : "An unknown error occurred.";
